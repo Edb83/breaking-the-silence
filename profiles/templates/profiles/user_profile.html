@@ -7,7 +7,7 @@
   <p>Regiment: {{ user_profile.regiment }}</p>
   <p>Rank: {{ user_profile.rank }}</p>
 
-  {% if request.user == user_profile.user %}
-    <a href="{% url 'edit_user_profile' %}" class="btn btn-primary">Edit Profile</a>
-{% endif %}
+    {% if request.user == user_profile.user %}
+        <a href="{% url 'edit_user_profile' %}" class="btn btn-primary">Edit Profile</a>
+    {% endif %}
 {% endblock %}
