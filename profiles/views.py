@@ -5,6 +5,8 @@ from .models import UserProfile
 @login_required
 def user_profile(request, username):
     user_profile = get_object_or_404(UserProfile, user__username=username)
-    context = {'user_profile': user_profile}
+    display_username = "Anonymous" if user_profile.is_anonymous else user_profile.user.username
+    context = {'user_profile': user_profile, 'display_username': display_username}
     return render(request, 'user_profile.html', context)
+
 
