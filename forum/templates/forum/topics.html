@@ -1,12 +1,25 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 {% block content %}
-    <h1>Topics</h1>
-    <ul>
-        {% for topic in topics %}
-            <li>
-                <a href="{% url 'topic_detail' topic_id=topic.id %}">{{ topic.title }}</a>
-            </li>
-        {% endfor %}
-    </ul>
+<h1>Topics</h1>
+
+{% if user.is_authenticated %}
+    <h2>Create a new topic</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create Topic</button>
+    </form>
+{% endif %}
+
+<h2>All Topics</h2>
+<ul>
+    {% for topic in topics %}
+        <li>
+            <a href="{% url 'topic_detail' topic_id=topic.id %}">{{ topic.title }}</a>
+        </li>
+    {% empty %}
+        <li>No topics found</li>
+    {% endfor %}
+</ul>
 {% endblock %}
