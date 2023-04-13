@@ -4,7 +4,7 @@
 /* nav bar and footer css here */
 
 nav a {
-    margin: 0.3em;
+    margin: 0.5em;
 }
 
 a,nav>menu {
@@ -33,6 +33,7 @@ footer {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    margin:auto
 }
 
 footer ul {
@@ -42,6 +43,8 @@ footer ul {
 footer p {
     width: 33.3%;
 }
+
+
 
 /* body */
 
