@@ -24,6 +24,13 @@ Tests have been done through the use of DevTools on the browser.
 | Footer Responsiveness | Good | Good | Good | Good | Good |
 
 ### BROWSER COMPATIBILITY TEST
+The website's appearance should be the same, regardless of the browser being used. The website's responsiveness should be the same, regardless of the browser being used.
+
+|   | Chrome | Edge | Safari | Firefox |
+| --- | --- | --- | --- | --- |
+| Intended appearance? | Good | Good | Good | Good |
+| Intended responsiveness? | Good | Good | Good | Good |
+
 ### BUGS TEST
 ### LIGHTHOUSE TEST
 ### CODE VALIDATION TEST (HTML)
