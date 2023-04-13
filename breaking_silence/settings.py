@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     # Custom
     'home',
     'profiles',
+    'forum',
     'wellness',
     'connections',
 ]
