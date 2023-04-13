@@ -37,5 +37,5 @@ def wellness_tracker(request):
         "stats": serialized_stats,
         "date": serialized_date
         }
-    return render(request, 'wellness/tracker.html')
+    return render(request, 'wellness/tracker.html', context)
 
