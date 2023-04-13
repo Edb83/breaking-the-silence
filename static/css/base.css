@@ -1,3 +1,50 @@
+/* link for google font */
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif&display=swap');
+
+/* nav bar and footer css here */
+
+nav a {
+    margin: 0.3em;
+}
+
+a,nav>menu {
+    color: #fff4f3;
+}
+
+.menu {
+    height: auto;
+    padding-top: 5px;
+    padding-left: 15px;
+    background: rgb(0, 0, 0, 0.9);
+    font-size: 22px;
+    font-family: pt serif, oswald, sans-serif;
+    font-weight: 600;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+}
+
+footer {
+    padding: 1em 0;
+    background-color: rgb(0, 0, 0, 0.9);
+    color: #fff4f3;
+    text-align: center;
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+footer ul {
+    list-style-type: none;
+}
+
+footer p {
+    width: 33.3%;
+}
+
+/* body */
+
 body {
     background: #fafafa;
 }
