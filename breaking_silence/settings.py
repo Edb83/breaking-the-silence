@@ -30,6 +30,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['https://8000-edb83-breakingthesilen-q69f245kenw.ws-eu93.gitpod.io/', 'localhost', ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://8000-edb83-breakingthesilen-q69f245kenw.ws-eu93.gitpod.io',
+]
 
 # Application definition
 
