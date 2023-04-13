@@ -9,6 +9,7 @@
 
     {% if request.user == user_profile.user %}
         <a href="{% url 'edit_user_profile' %}" class="btn btn-primary">Edit Profile</a>
+        <a href="{% url 'user_check_in' %}" class="btn btn-primary">How am I feeling today?</a>
     {% endif %}
   <div>
     {% include 'profiles/includes/requests.html' %}
