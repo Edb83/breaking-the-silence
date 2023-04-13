@@ -36,4 +36,9 @@ The website's appearance should be the same, regardless of the browser being use
 ### CODE VALIDATION TEST (HTML)
 ### CODE VALIDATION TEST (CSS)
 ### USER STORIES TEST
+| Expect | Action | Result |
+| --- | --- | --- |
+
 ### FEATURES TEST
+| Feature | Expect | Action | Result |
+| --- | --- | --- | --- |
