@@ -2,3 +2,49 @@ body {
     background: #fafafa;
 }
 
+:root {
+    --primary: #00028b;
+    --secondary: rgb(0, 247, 255);
+    --tertiary: rgb(119, 0, 255);
+    --padding: 1rem;
+  }
+
+  p {
+    color: var(--tertiary);
+    padding: var(--padding);
+  }
+  
+  .edit_user_profile_section, .user_profile_section {
+    color: var(--secondary);
+    width: 90%;
+    text-align: center;
+  }
+
+  .edit_user_profile_title, label {
+    color: var(--primary);
+    font-family: 'Times New Roman', Times, serif;
+  }
+
+  .edit_user_profile_button, .user_profile_edit_button{
+    color: var(--primary);
+    background-color: var(--secondary);
+  }
+
+  .edit_user_profile_button:hover  {
+    color: var(--secondary);
+    background-color: var(--primary);
+    font-family: 'Times New Roman', Times, serif;
+  }
+
+  .user_profile_section {
+    color: var(--primary);
+  }
+
+  .user_profile_story {
+    width: 90%;
+    color: var(--primary);
+  }
+
+  .user_profile_subheading {
+    color: var(--primary);
+  }

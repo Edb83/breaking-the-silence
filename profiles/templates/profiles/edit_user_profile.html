@@ -1,10 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Edit Profile</h1>
+<section class="edit_user_profile_section">
+  <h1 class="edit_user_profile_title">Edit Profile</h1>
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Save changes</button>
+    <button class="edit_user_profile_button" type="submit">Save changes</button>
   </form>
+</section>
 {% endblock %}
