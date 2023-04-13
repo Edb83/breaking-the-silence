@@ -10,9 +10,50 @@
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
 </head>
 <body>
+    <header>
+        <!--nav bar to go here using icons-->
+        <a href="{% url 'home' %}"></a>
+
+        <nav class="menu">
+            <a href="{% url 'home' %}" class="active"><i class="fas fa-home"></i>Home</a>
+            <a href="" class="active"><i class="fas fa-hands-helping"></i>Page1</a>
+            <a href="" class="active"><i class="fas fa-phone"></i>Page2</a>
+            <a href="" class="active"><i class="fas fa-pen"></i>Page3</a>
+        </nav>
+
+    </header>
     <h1>This is the outer template (base.html)</h1>
     <main>
         {% block content %}{% endblock %}
     </main>
+
+     <!--footer with address, contact details and seocial media with icons-->
+     <footer>
+        <p><strong>About</strong>
+            <br> Breaking the Silence was set up in 2023 by 7 individuals all with a common goal of helping Veterans with their mental health
+        </p>
+        <p><strong>Contact, Breaking the Silence</strong><br>123 Wellness Road<br>London<br><i
+                class="fas fa-envelope"></i>Breakingthesilence @gmail.com<i class="fas fa-phone"></i>01234 567890
+        </p>
+        <ul>
+            <li>
+                <strong>Social Media</strong>
+            </li>
+            <li>
+                <a href="https://facebook.com" target="_blank" rel="noopener"
+                    aria-label="Visit our Facebook page (opens in a new tab)"><i class="fab fa-facebook"></i></a>
+            </li>
+            <li>
+                <a href="https://twitter.com" target="_blank" rel="noopener"
+                    aria-label="Visit our Twitter page (opens in a new tab)"><i class="fab fa-twitter-square"></i></a>
+            </li>
+            <li>
+                <a href="https://instagram.com" target="_blank" rel="noopener"
+                    aria-label="Visit our Instagram page (opens in a new tab)"><i class="fab fa-instagram"></i></a>
+            </li>
+        </ul>
+    </footer>
+    <!-- link for font awesome-->
+    <script src="https://kit.fontawesome.com/c7dbda0798.js" crossorigin="anonymous"></script>
 </body>
 </html>
