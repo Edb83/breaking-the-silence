@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     # Custom
     'home',
     'profiles',
+    'forum',
 ]
 
 MIDDLEWARE = [
