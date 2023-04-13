@@ -11,6 +11,16 @@
 </head>
 <body>
     <h1>This is the outer template (base.html)</h1>
+    <nav>
+        <ul>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'user_profile' username=user.username %}">My Profile</a></li>
+                <li><a href="{% url 'account_logout' %}">Logout</a></li>
+            {% else %}
+                <li><a href="{% url 'account_login' %}">Sign In</a></li>
+            {% endif %}
+        </ul>
+    </nav>
     <main>
         {% block content %}{% endblock %}
     </main>
