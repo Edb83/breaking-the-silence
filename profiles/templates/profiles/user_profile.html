@@ -2,5 +2,8 @@
 
 {% block content %}
   <h1>{{ display_username }}'s Profile</h1>
-  <p>story: {{ user_profile.story }}</p>
+  <p>Story: {{ user_profile.story }}</p>
+  <p>Force: {{ user_profile.get_force_display }}</p>
+  <p>Regiment: {{ user_profile.regiment }}</p>
+  <p>Rank: {{ user_profile.rank }}</p>
 {% endblock %}
