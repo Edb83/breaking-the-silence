@@ -3,6 +3,8 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from .models import Wellness
 from .forms import CheckinForm
+from django.urls import reverse
+
 
 @login_required
 def user_check_in(request):
@@ -12,8 +14,12 @@ def user_check_in(request):
             wellness = form.save(commit=False)
             wellness.user = request.user
             wellness.save()
-            return HttpResponseRedirect('/wellness/tracker')
+            return HttpResponseRedirect(reverse('wellness_tracker'))
     else:
         form = CheckinForm()
     return render(request, 'wellness/checkin.html', {'form': form})
+
+@login_required
+def wellness_tracker(request):
+    return render(request, 'wellness/tracker.html')
 
