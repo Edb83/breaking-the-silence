@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 <h1>{{ topic.title }}</h1>
@@ -10,7 +11,7 @@
     <h3><a href="{% url 'post_detail' post_id=post.id %}">{{ post.content|truncatechars:50 }}</a></h3>
     <p>By: {{ post.created_by.username }} | {{ post.created_at }}</p>
     
-    {% if post.comments.all %}
+    <!-- {% if post.comments.all %}
       <h4>Replies:</h4>
       {% for comment in post.comments.all|slice:":2" %}
         <div>
@@ -18,7 +19,7 @@
           <p>By: {{ comment.created_by.username }} | {{ comment.created_at }}</p>
         </div>
       {% endfor %}
-    {% endif %}
+    {% endif %} -->
   </div>
 {% endfor %}
 
@@ -26,7 +27,7 @@
   <h2>Add a new post:</h2>
   <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
+    {{ form|crispy }}
     <button type="submit">Add Post</button>
   </form>
 {% endif %}

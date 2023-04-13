@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 <h1>{{ post.topic.title }} - {{ post.created_by.username }}</h1>
@@ -7,8 +8,9 @@
 <h2>Comments:</h2>
 {% for comment in comments %}
   <div>
-    <p>{{ comment.created_by.username }} - {{ comment.created_at }}</p>
+    <p>{{ comment.created_by.username }} - {{ comment.created_at }} <a href="{% url 'create_connection' comment.created_by.username %}">Connect</a></p>
     <p>{{ comment.content }}</p>
+    
   </div>
 {% endfor %}
 
@@ -16,7 +18,7 @@
   <h2>Add a comment:</h2>
   <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
+    {{ form|crispy }}
     <button type="submit">Add Comment</button>
   </form>
 {% endif %}
