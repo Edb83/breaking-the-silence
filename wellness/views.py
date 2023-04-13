@@ -21,5 +21,21 @@ def user_check_in(request):
 
 @login_required
 def wellness_tracker(request):
+    serialized_stats = []
+    serialized_date = []
+    for stat in Wellness.objects.filter(user=request.user):
+        serialized_stats.append(int(
+            stat.health_rating,
+        ))
+        date_only = stat.date.date()
+        serialized_date.append(str(
+            date_only
+        ))
+    serialized_stats.reverse()
+    serialized_date.reverse()
+    context = {
+        "stats": serialized_stats,
+        "date": serialized_date
+        }
     return render(request, 'wellness/tracker.html')
 
