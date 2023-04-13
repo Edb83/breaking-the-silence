@@ -47,7 +47,9 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-
+    # Crispy Forms
+    'crispy_forms',
+    "crispy_bootstrap5",
     # Custom
     'home',
     'profiles',
@@ -66,6 +68,9 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'breaking_silence.urls'
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 TEMPLATES = [
     {
@@ -107,7 +112,6 @@ LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 
 WSGI_APPLICATION = 'breaking_silence.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
