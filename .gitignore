@@ -8,4 +8,5 @@ __pycache__/
 *.sqlite3
 *.pyc
 node_modules/
-*.sqlite3
+db.sqlite3
+.DS_Store
