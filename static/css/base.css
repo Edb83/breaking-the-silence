@@ -7,7 +7,8 @@ nav a {
     margin: 0.5em;
 }
 
-a,nav>homemenu{
+a,
+nav>homemenu {
     color: #fff4f3;
 }
 
@@ -33,7 +34,7 @@ footer {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    
+
 }
 
 footer ul {
