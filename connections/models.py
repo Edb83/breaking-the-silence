@@ -2,11 +2,16 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class ConnectionRequest(models.Model):
+    STATUS_CHOICES = (
+        (0, 'Pending'),
+        (1, 'Accepted'),
+        (2, 'Dismissed')
+    )
+
     sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name='sent_requests')
     receiver = models.ForeignKey(User, on_delete=models.CASCADE, related_name='received_requests')
     created_at = models.DateTimeField(auto_now_add=True)
-    accepted = models.BooleanField(default=False)
-    dismissed = models.BooleanField(default=False)
+    status = models.IntegerField(choices=STATUS_CHOICES, default=0)
 
     class Meta:
         constraints = [

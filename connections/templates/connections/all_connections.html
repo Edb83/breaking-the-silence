@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %} - Connections{% endblock %}
+
+{% block content %}
+<h1>Connections</h1>
+<h2>Pending requests</h2>
+<ul>
+    {% for r in pending_requests %}
+        <li>
+            {% if r.sender != request.user %}
+                {{ r.sender }} wants to connect 
+                <a href="{% url 'handle_connection' request.pk 1 %}">Accept</a> |
+                <a href="{% url 'handle_connection' request.pk 2 %}">Dismiss</a>
+            {% else %}
+                You requested a connection with <a href="{% url 'user_profile' r.receiver.username %}">{{ r.receiver }}</a>
+            {% endif %}
+        </li>
+    {% empty %}
+        <li>No pending requests</li>    
+    {% endfor %}
+</ul>
+
+<h2>Connections</h2>
+<ul>
+    {% for connection in accepted_requests %}
+        <li>{% if connection.receiver == request.user %}
+                <a href="{% url 'user_profile' connection.sender.username %}">{{ connection.sender }}</a>
+            {% else %}
+                <a href="{% url 'user_profile' connection.receiver.username %}">{{ connection.receiver }}</a>
+            {% endif %}</li>
+    {% empty %}
+        <li>No connections</li>
+    {% endfor %}
+</ul>
+
+
+{% endblock %}
