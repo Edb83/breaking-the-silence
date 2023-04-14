@@ -1,0 +1,13 @@
+<h3>Connection requests</h3>
+{% if connection_requests %}
+<ul>
+    {% for connection in connection_requests %}
+        <li>
+            {{ connection.sender }} wants to connect 
+            <a href="{% url 'handle_connection' connection.pk 'accept' %}">Accept</a> |
+             <a href="{% url 'handle_connection' connection.pk 'dismiss' %}">Dismiss</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+    <p>No pending requests</p>
+{% endif %}
