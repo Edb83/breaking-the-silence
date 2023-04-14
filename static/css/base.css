@@ -2,3 +2,11 @@ body {
     background: #fafafa;
 }
 
+
+/* ----------------------------------forum */
+
+/* hides boostrap card border */
+.card-no-bored {
+    border: none !important;
+}
+
