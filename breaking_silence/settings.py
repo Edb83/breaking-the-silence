@@ -32,6 +32,8 @@ ALLOWED_HOSTS = ['https://8000-edb83-breakingthesilen-q69f245kenw.ws-eu93.gitpod
 
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-edb83-breakingthesilen-6b1rx12eq44.ws-eu93.gitpod.io', 'https://8000-edb83-breakingthesilen-q69f245kenw.ws-eu93.gitpod.io',
+    'https://8000-edb83-breakingthesilen-6b1rx12eq44.ws-eu93.gitpod.io',
+    'https://8000-edb83-breakingthesilen-6b1rx12eq44.ws-eu94.gitpod.io',
 ]
 
 # Application definition
