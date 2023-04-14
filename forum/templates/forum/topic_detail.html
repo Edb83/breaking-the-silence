@@ -2,10 +2,11 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<h1>{{ topic.title }}</h1>
+<div class="overlay_posts"></div>
+<h1 class="topic">{{ topic.title }}</h1>
 <p>{{ topic.description }}</p>
 
-<h2>Posts:</h2>
+<h2 class="post">Posts:</h2>
 {% for post in posts %}
   <div>
     <h3><a href="{% url 'post_detail' post_id=post.id %}">{{ post.content|truncatechars:50 }}</a></h3>
@@ -24,7 +25,7 @@
 {% endfor %}
 
 {% if user.is_authenticated %}
-  <h2>Add a new post:</h2>
+  <h2 class="post">Add a new post:</h2>
   <form method="post">
     {% csrf_token %}
     {{ form|crispy }}
