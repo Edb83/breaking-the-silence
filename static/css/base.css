@@ -4,47 +4,48 @@ body {
 
 :root {
     --primary: #00028b;
-    --secondary: rgb(0, 247, 255);
-    --tertiary: rgb(119, 0, 255);
+    --secondary: rgb(213, 246, 247);
+    --tertiary: rgb(56, 5, 114);
     --padding: 1rem;
-  }
-
-  p {
-    color: var(--tertiary);
-    padding: var(--padding);
   }
   
   .edit_user_profile_section, .user_profile_section {
-    color: var(--secondary);
-    width: 90%;
-    text-align: center;
-  }
-
-  .edit_user_profile_title, label {
     color: var(--primary);
-    font-family: 'Times New Roman', Times, serif;
   }
 
-  .edit_user_profile_button, .user_profile_edit_button{
+  .edit_user_profile_title, .user_profile_title {
     color: var(--primary);
-    background-color: var(--secondary);
-  }
-
-  .edit_user_profile_button:hover  {
-    color: var(--secondary);
-    background-color: var(--primary);
-    font-family: 'Times New Roman', Times, serif;
+    text-decoration: underline;
   }
 
   .user_profile_section {
+    margin: 2%;
     color: var(--primary);
+    background-color:var(--secondary);
+    border-color: var(--primary);
+    border-width: 5px;
+    border-radius: 15px;
+  }
+
+  .user_profile_title, .edit_user_profile_title {
+    color: var(--primary);
+    text-decoration: underline;
+    padding-bottom: 10px;
   }
 
   .user_profile_story {
-    width: 90%;
     color: var(--primary);
   }
 
-  .user_profile_subheading {
-    color: var(--primary);
+  .user_profile_key_info {
+    color: var(--secondary);
+    background-color: var(--primary);
+    padding: 5px;
+    border-color: #000000;
+    border-width: 10px;
+    border-radius: 15px;
+  }
+
+  .user_profile_key_info_text {
+    color: var(--secondary);
   }
