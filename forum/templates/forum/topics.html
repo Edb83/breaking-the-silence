@@ -2,30 +2,33 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<div class="container mt-3">
+<div class="overlay"></div>
+<div class="container mt-3 ">
+    <div class="row">
+        <div class="col col-lg-6">
+            <h2 class="topic">Topics</h2>
 
-    <h2>Topics</h2>
+            {% if user.is_authenticated %}
+            <h4 class="post">Create a new topic</h4>
+            <form method="post">
+                {% csrf_token %}
+                {{ form |crispy }}
+                <button type="submit">Create Topic</button>
+            </form>
+            {% endif %}
 
-    {% if user.is_authenticated %}
-        <h4>Create a new topic</h4>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Create Topic</button>
-        </form>
-    {% endif %}
 
-   <div class="container mt-3">
-        <h4>All Topics</h4>
-        <div class="list-group col-lg-4">
-        {% for topic in topics %}
-                <a class="list-group-item list-group-item-action" href="{% url 'topic_detail' topic_id=topic.id %}">{{ topic.title }}</a>
-        {% empty %}
-            <p>No topics found</p>
-        {% endfor %}
+            <h4 class="post1">All Topics</h4>
+            <div class="list-group">
+                {% for topic in topics %}
+                <a class="list-group-item list-group-item-action" href="{% url 'topic_detail' topic_id=topic.id %}">{{
+                    topic.title }}</a>
+                {% empty %}
+                <p>No topics found</p>
+                {% endfor %}
+            </div>
         </div>
-   </div>
-    
+    </div>
 
 </div>
 
