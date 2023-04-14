@@ -2,3 +2,12 @@ body {
     background: #fafafa;
 }
 
+.toast {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 9999;
+    min-width: 350px;
+    max-width: 350px;
+}
+

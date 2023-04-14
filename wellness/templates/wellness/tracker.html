@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>Tracker</h1>
+  <h1 class="text-center py-2">Tracker</h1>
 
   <canvas id="myChart" width="500" height="300"></canvas>
 <!-- Weight Tracker using chart.js -->
@@ -54,6 +54,7 @@
         }
     });
     </script>
-
-  <a href="{% url 'user_profile' username=user.username %}">My Profile</a>
+<div class="text-center py-2">
+  <a href="{% url 'user_profile' username=user.username %}" class="btn btn-primary">My Profile</a>
+</div>
 {% endblock %}
