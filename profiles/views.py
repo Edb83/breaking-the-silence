@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from .models import UserProfile
 from .forms import UserProfileForm
+from django.contrib import messages
 
 @login_required
 def user_profile(request, username):
@@ -18,6 +19,7 @@ def edit_user_profile(request):
         form = UserProfileForm(request.POST, request.FILES, instance=user_profile)
         if form.is_valid():
             form.save()
+            messages.success(request, "Thanks for editing your profile!")
             return redirect('user_profile', username=request.user.username)
     else:
         form = UserProfileForm(instance=user_profile)
