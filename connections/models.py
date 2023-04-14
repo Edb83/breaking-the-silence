@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-class ConnectionRequest(models.Model):
+class Connection(models.Model):
     STATUS_CHOICES = (
         (0, 'Pending'),
         (1, 'Accepted'),

@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models import ConnectionRequest
+from .models import Connection
 
-admin.site.register(ConnectionRequest)
+admin.site.register(Connection)

@@ -1,8 +1,8 @@
-from connections.models import ConnectionRequest
+from connections.models import Connection
 
 def connect_context(request):
     if request.user.is_authenticated:
-        connection_requests = ConnectionRequest.objects.filter(
+        connection_requests = Connection.objects.filter(
             receiver=request.user,
             status=0
             )
