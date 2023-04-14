@@ -4,8 +4,7 @@ def connect_context(request):
     if request.user.is_authenticated:
         connection_requests = ConnectionRequest.objects.filter(
             receiver=request.user,
-            accepted=False,
-            dismissed=False
+            status=0
             )
     else:
         connection_requests = []
