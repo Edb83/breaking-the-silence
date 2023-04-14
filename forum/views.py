@@ -1,11 +1,13 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Topic, Post
 from .forms import TopicForm, PostForm, CommentForm
+from django.db.models import Q
 from django.contrib import messages
 
 def topics(request):
     topics = Topic.objects.all()
+    form = TopicForm()
     if request.method == 'POST':
         form = TopicForm(request.POST)
         if form.is_valid():
@@ -14,8 +16,15 @@ def topics(request):
             new_topic.save()
             messages.success(request, "Thanks for adding a topic!")
             return redirect('topics')
-    else:
-        form = TopicForm()
+    elif request.GET:
+        if 'search' in request.GET:
+            query = request.GET['search']
+            if not query:
+                messages.error(request, "Please enter search criteria")
+                return render(request, 'forum/topics.html')
+            queries = Q(title__icontains=query)
+            serialized_topics = topics.filter(queries)
+            return render(request, 'forum/topics.html', {'topics': serialized_topics, 'form': form})
     return render(request, 'forum/topics.html', {'topics': topics, 'form': form})
 
 @login_required
