@@ -2,15 +2,25 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+<div class="overlay_posts"></div>
+<h1 class="topic">{{ topic.title }}</h1>
+<p>{{ topic.description }}</p>
 
-<div class="container">
-  <div class="card m-1 rounded-0">
-    <h1 class="m-1">{{ topic.title }}</h1>
-    <p class="m-1">{{ topic.content }}</p>
-    <p class="m-2"><small class="text-muted">By: {{ topic.created_by.username }} | {{ topic.created_at }}</small></p>
-    {% if user.is_staff %}
-      <a class="text-muted" href="{% url 'edit_topic' topic_id=topic.id %}">Edit</a>
-    {% endif %}
+<h2 class="post">Posts:</h2>
+{% for post in posts %}
+  <div>
+    <h3><a href="{% url 'post_detail' post_id=post.id %}">{{ post.content|truncatechars:50 }}</a></h3>
+    <p>By: {{ post.created_by.username }} | {{ post.created_at }}</p>
+    
+    <!-- {% if post.comments.all %}
+      <h4>Replies:</h4>
+      {% for comment in post.comments.all|slice:":2" %}
+        <div>
+          <p>{{ comment.content }}</p>
+          <p>By: {{ comment.created_by.username }} | {{ comment.created_at }}</p>
+        </div>
+      {% endfor %}
+    {% endif %} -->
   </div>
   </div>
   <div class="card rounded-0 m-1">
@@ -51,7 +61,7 @@
 
 
 {% if user.is_authenticated %}
-  <h2>Add a new post:</h2>
+  <h2 class="post">Add a new post:</h2>
   <form method="post">
     {% csrf_token %}
     {{ form|crispy }}
