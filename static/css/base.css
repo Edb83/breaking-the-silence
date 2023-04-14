@@ -7,11 +7,11 @@ nav a {
     margin: 0.5em;
 }
 
-a,nav>menu {
+a,nav>homemenu{
     color: #fff4f3;
 }
 
-.menu {
+.homemenu {
     height: auto;
     padding-top: 5px;
     padding-left: 15px;
