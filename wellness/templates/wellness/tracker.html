@@ -1,60 +1,67 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1 class="text-center py-2">Tracker</h1>
+<section class="user_profile_section m-3 p-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="tracker_form_title">Tracker</h1>
+            </div>
+        </div>
+    </div>
 
-  <canvas id="myChart" width="500" height="300"></canvas>
-<!-- Weight Tracker using chart.js -->
-<script>
-    const ctx = document.getElementById('myChart').getContext('2d');
-    const myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: [{%for stat in date%}'{{stat}}',{%endfor%}],
-            datasets: [{
-                label: 'Score',
-                data: [{%for stat in stats%}{{stat}},{%endfor%}],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                x: {
-                    title: {
-                        text: 'Date',
-                        display: true,
-                        padding: 10
-                    }
-                },
-                y: {
-                    beginAtZero: true,
-                    title: {
-                        text: 'Score',
-                        display: true,
-                        padding: 10
+    <canvas id="myChart" width="500" height="300"></canvas>
+    <!-- Weight Tracker using chart.js -->
+    <script>
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [{%for stat in date%}'{{stat}}',{%endfor%}],
+                datasets: [{
+                    label: 'Score',
+                    data: [{%for stat in stats%}{{stat}},{%endfor%}],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    x: {
+                        title: {
+                            text: 'Date',
+                            display: true,
+                            padding: 10
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            text: 'Score',
+                            display: true,
+                            padding: 10
+                        }
                     }
                 }
             }
-        }
-    });
-    </script>
-<div class="text-center py-2">
-  <a href="{% url 'user_profile' username=user.username %}" class="btn btn-primary">My Profile</a>
-</div>
+        });
+        </script>
+
+    <a href="{% url 'user_profile' username=user.username %}" class="btn btn-primary">My Profile</a>
+</section>
 {% endblock %}
