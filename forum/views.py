@@ -59,3 +59,18 @@ def edit_topic(request, topic_id):
     else:
         form = TopicForm(instance=topic)
     return render(request, 'forum/edit_topic.html', {'form': form})
+
+@login_required
+def edit_post(request, post_id):
+    post = get_object_or_404(Post, pk=post_id)
+    if request.user != post.created_by:
+        return HttpResponseForbidden("You don't have permission to edit this post.")
+    
+    if request.method == 'POST':
+        form = PostForm(request.POST, instance=post)
+        if form.is_valid():
+            form.save()
+            return redirect('topic_detail', topic_id=post.topic.id)
+    else:
+        form = PostForm(instance=post)
+    return render(request, 'forum/edit_post.html', {'form': form})

@@ -4,12 +4,17 @@
 {% block content %}
 <h1>{{ post.topic.title }} - {{ post.created_by.username }}</h1>
 <p>{{ post.content }}</p>
-
+{% if user == post.created_by %}
+      <a class="text-muted" href="{% url 'edit_post' post_id=post.id %}">Edit</a>
+  {% endif %}
 <h2>Comments:</h2>
 {% for comment in comments %}
   <div>
     <p>{{ comment.created_by.username }} - {{ comment.created_at }} <a href="{% url 'create_connection' comment.created_by.username %}">Connect</a></p>
     <p>{{ comment.content }}</p>
+    {% if user == post.created_by %}
+      <a class="text-muted" href="{% url 'edit_post' post_id=post.id %}">Edit</a>
+    {% endif %}
     
   </div>
 {% endfor %}

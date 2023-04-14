@@ -30,7 +30,7 @@
             <div class="card-title card-header m-1">
               <h3>Replies:</h3>
             </div>
-          {% for comment in post.comments.all|slice:":2" %}
+            {% for comment in post.comments.all|slice:":2" %}
             <div class="card m-1 rounded-0">
               <div>
                 <p class="m-1">{{ comment.content }}</p>
