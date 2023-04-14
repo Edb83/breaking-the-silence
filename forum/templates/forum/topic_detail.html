@@ -5,8 +5,13 @@
 
 <div class="container">
   <div class="card m-1 rounded-0">
-    <h1>{{ topic.title }}</h1>
-    <p>{{ topic.content }}</p>
+    <h1 class="m-1">{{ topic.title }}</h1>
+    <p class="m-1">{{ topic.content }}</p>
+    <p class="m-2"><small class="text-muted">By: {{ topic.created_by.username }} | {{ topic.created_at }}</small></p>
+    {% if user.is_staff %}
+      <a class="text-muted" href="{% url 'edit_topic' topic_id=topic.id %}">Edit</a>
+    {% endif %}
+  </div>
   </div>
   <div class="card rounded-0 m-1">
     <div class="card-title m-1 card-header">
@@ -16,9 +21,9 @@
     {% for post in posts %}
     <div class="card rounded-0 m-1">
       <div class="card-body">
-        <h3><a href="{% url 'post_detail' post_id=post.id %}">{{ post.content|truncatechars:50 }}</a></h3>
-        <div class="card-footer">
-          <p><small class="text-muted">By: {{ post.created_by.username }} | {{ post.created_at }}</small> </p>
+        <h3><a class="text-black" href="{% url 'post_detail' post_id=post.id %}">{{ post.content|truncatechars:50 }}</a></h3>
+        <div class="card-footer h-1">
+          <p><small class="text-muted">By: {{ post.created_by.username }} | {{ post.created_at }}</small></p>
         </div>
         <div class="card m-1 rounded-0 card-no-bored">
           {% if post.comments.all %}
@@ -36,7 +41,7 @@
             </div>
             {% endfor %}
           {% endif %}
-          <a href="{% url 'post_detail' post_id=post.id %}" class="btn btn-primary col-1">Reply</a>
+          <a class="text-muted"  href="{% url 'post_detail' post_id=post.id %}">Reply</a>
         </div>
       </div> 
     </div>

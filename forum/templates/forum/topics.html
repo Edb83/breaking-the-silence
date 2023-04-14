@@ -5,8 +5,7 @@
 <div class="container mt-3">
 
     <h2>Topics</h2>
-
-    {% if user.is_authenticated %}
+    {% if user.is_authenticated and user.is_staff %}
         <h4>Create a new topic</h4>
         <form method="post">
             {% csrf_token %}

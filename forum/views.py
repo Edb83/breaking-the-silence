@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from .models import Topic, Post
 from .forms import TopicForm, PostForm, CommentForm
 
@@ -48,4 +48,14 @@ def post_detail(request, post_id):
         form = CommentForm()
     return render(request, 'forum/post_detail.html', {'post': post, 'comments': comments, 'form': form})
 
-
+@user_passes_test(lambda u: u.is_staff)
+def edit_topic(request, topic_id):
+    topic = get_object_or_404(Topic, pk=topic_id)
+    if request.method == 'POST':
+        form = TopicForm(request.POST, instance=topic)
+        if form.is_valid():
+            form.save()
+            return redirect('topic_detail', topic_id=topic.id)
+    else:
+        form = TopicForm(instance=topic)
+    return render(request, 'forum/edit_topic.html', {'form': form})
