@@ -1,23 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
-<section>
-  <div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">{{ display_username }}</h5>
-      <p class="card-text">Story: {{ user_profile.story }}</p>
-    </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">Force: {{ user_profile.get_force_display }}</li>
-      <li class="list-group-item">Regiment: {{ user_profile.regiment }}</li>
-      <li class="list-group-item">Rank: {{ user_profile.rank }}</li>
-    </ul>
-    <div class="card-body">
-      {% if request.user == user_profile.user %}
-      <a href="{% url 'edit_user_profile' %}" class="card-link, btn btn-primary">Edit Profile</a>
-      {% endif %}
-    </div>
+  <h1>{{ display_username }}'s Profile</h1>
+  <p>Story: {{ user_profile.story }}</p> 
+  <p>Force: {{ user_profile.force }}</p>
+  <p>Regiment: {{ user_profile.regiment }}</p>
+  <p>Rank: {{ user_profile.rank }}</p>
+
+    {% if request.user == user_profile.user %}
+        <a href="{% url 'edit_user_profile' %}" class="btn btn-primary">Edit Profile</a>
+        <a href="{% url 'user_check_in' %}" class="btn btn-primary">How am I feeling today?</a>
+    {% endif %}
+  <div>
+    {% include 'profiles/includes/requests.html' %}
   </div>
 </section>
 {% endblock %}

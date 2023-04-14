@@ -31,8 +31,8 @@ DEBUG = True
 ALLOWED_HOSTS = ['https://8000-edb83-breakingthesilen-q69f245kenw.ws-eu93.gitpod.io/', 'localhost', '127.0.0.1' ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-edb83-breakingthesilen-q69f245kenw.ws-eu93.gitpod.io',
-    'https://8000-edb83-breakingthesilen-bmwin9i74z9.ws-eu94.gitpod.io',
+    'https://8000-edb83-breakingthesilen-6b1rx12eq44.ws-eu93.gitpod.io',
+    'https://8000-edb83-breakingthesilen-6b1rx12eq44.ws-eu94.gitpod.io',
 ]
 
 # Application definition
@@ -48,10 +48,13 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-
+    # Crispy Forms
+    'crispy_forms',
+    "crispy_bootstrap5",
     # Custom
     'home',
     'profiles',
+    'forum',
     'wellness',
     'connections',
 ]
@@ -67,6 +70,9 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'breaking_silence.urls'
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 TEMPLATES = [
     {
@@ -108,7 +114,6 @@ LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 
 WSGI_APPLICATION = 'breaking_silence.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases

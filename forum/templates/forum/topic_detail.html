@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h1>{{ topic.title }}</h1>
+<p>{{ topic.description }}</p>
+
+<h2>Posts:</h2>
+{% for post in posts %}
+  <div>
+    <h3><a href="{% url 'post_detail' post_id=post.id %}">{{ post.content|truncatechars:50 }}</a></h3>
+    <p>By: {{ post.created_by.username }} | {{ post.created_at }}</p>
+    
+    <!-- {% if post.comments.all %}
+      <h4>Replies:</h4>
+      {% for comment in post.comments.all|slice:":2" %}
+        <div>
+          <p>{{ comment.content }}</p>
+          <p>By: {{ comment.created_by.username }} | {{ comment.created_at }}</p>
+        </div>
+      {% endfor %}
+    {% endif %} -->
+  </div>
+{% endfor %}
+
+{% if user.is_authenticated %}
+  <h2>Add a new post:</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit">Add Post</button>
+  </form>
+{% endif %}
+{% endblock %}
