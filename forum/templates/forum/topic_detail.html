@@ -21,7 +21,7 @@
     {% for post in posts %}
     <div class="card rounded-0 m-1">
       <div class="card-body">
-        <h3><a class="text-black" href="{% url 'post_detail' post_id=post.id %}">{{ post.content|truncatechars:50 }}</a></h3>
+        <h3><a class="text-black" href="{% url 'post_detail' pk=post.id %}">{{ post.content|truncatechars:50 }}</a></h3>
         <div class="card-footer h-1">
           <p><small class="text-muted">By: {{ post.created_by.username }} | {{ post.created_at }}</small></p>
         </div>
@@ -41,7 +41,7 @@
             </div>
             {% endfor %}
           {% endif %}
-          <a class="text-muted"  href="{% url 'post_detail' post_id=post.id %}">Reply</a>
+          <a class="text-muted"  href="{% url 'post_detail' pk=post.id %}">Reply</a>
         </div>
       </div> 
     </div>
