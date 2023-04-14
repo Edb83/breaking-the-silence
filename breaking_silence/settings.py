@@ -35,9 +35,10 @@ RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
-CSRF_TRUSTED_ORIGINS = [
-    'https://8000-edb83-breakingthesilen-52n0c39z9xl.ws-eu94.gitpod.io'
-]
+# CSRF_TRUSTED_ORIGINS = [
+#     'https://8000-edb83-breakingthesilen-6b1rx12eq44.ws-eu93.gitpod.io',
+#     'https://8000-edb83-breakingthesilen-6b1rx12eq44.ws-eu94.gitpod.io',
+# ]
 
 # Application definition
 
