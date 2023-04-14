@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = ['https://8000-edb83-breakingthesilen-q69f245kenw.ws-eu93.gitpod.io/', 'localhost', '127.0.0.1' ]
+ALLOWED_HOSTS = ['https://8000-edb83-breakingthesilen-52n0c39z9xl.ws-eu94.gitpod.io','localhost']
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
