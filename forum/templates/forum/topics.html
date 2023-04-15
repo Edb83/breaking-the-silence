@@ -54,8 +54,8 @@
             <h4 class="post1">All Topics</h4>
             <div class="list-group">
                 {% for topic in topics %}
-                <a class="list-group-item list-group-item-action" href="{% url 'topic_detail' topic_id=topic.id %}">{{
-                    topic.title }}</a>
+                <a class="list-group-item list-group-item-action" href="{% url 'topic_detail' topic_id=topic.id %}">
+                    {{ topic.title }}</a>
                 {% empty %}
                 <p>No topics found</p>
                 {% endfor %}
