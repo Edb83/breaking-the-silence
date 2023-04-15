@@ -28,6 +28,7 @@
       {% endif %}
       <div class="topic_detail_button_spacing">
         <a class="btn btn-primary"  href="{% url 'post_detail' pk=post.id %}">Reply</a>
+        <a class="btn btn-danger"  href="{% url 'reported' %}">Report</a>
       </div>
     </div>
     {% endfor %}
@@ -44,14 +45,4 @@
     </div>
   </div>
 </section>
-
-{% if user.is_authenticated %}
-  <h2 class="post">Add a new post:</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form|crispy }}
-    <button type="submit" class="btn btn-primary">Add Post</button>
-  </form>
-  <a href="{% url 'topics' %}" class="btn btn-primary my-4">Back to Topics</a>
-{% endif %}
 {% endblock %}

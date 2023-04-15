@@ -99,3 +99,8 @@ def edit_post(request, post_id):
     else:
         form = PostForm(instance=post)
     return render(request, 'forum/edit_post.html', {'form': form})
+
+@login_required
+def reported(request):
+    messages.success(request, "Thanks for reporting this post.")
+    return render(request, 'forum/reported.html')

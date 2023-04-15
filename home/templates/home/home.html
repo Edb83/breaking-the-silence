@@ -3,7 +3,7 @@
 {% block title %} - Home{% endblock%}
 
 {% block content %}
-<img class="hero_img" src="/static/img/hackathon4.png" alt="" width="50%" >
+<img class="hero_img" src="{% static 'img/hackathon4.png'%}" alt="" width="50%" >
 <section class="hero_img_section m-3 p-3">
     <div class="container">
         <div class="row">
@@ -21,7 +21,7 @@
                         <div class="row">
                             {% for topic in topics %}
                             <div class="col-lg-4">
-                                    <div class="card">
+                                    <div class="card home-card">
                                         <h5 class="card-header">Featured</h5>
                                         <div class="card-body">
                                         <h5 class="card-title">{{ topic.title }}</h5>
@@ -40,7 +40,7 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-lg-4 my-4">
-                                        <div class="card">
+                                        <div class="card home-card">
                                             <h5 class="card-header">Forum</h5>
                                             <div class="card-body">
                                             <h5 class="card-title">Connect with others</h5>
@@ -51,7 +51,7 @@
                                 </div>
                 
                                 <div class="col-lg-4 my-4">
-                                    <div class="card">
+                                    <div class="card home-card">
                                         <h5 class="card-header">Create a Profile</h5>
                                         <div class="card-body">
                                         <h5 class="card-title">Sign up or login to create a profile</h5>
@@ -62,7 +62,7 @@
                                 </div>
                 
                                 <div class="col-lg-4 my-4">
-                                    <div class="card">
+                                    <div class="card home-card">
                                         <h5 class="card-header">Wellness Tracker</h5>
                                         <div class="card-body">
                                         <h5 class="card-title">Check in with yourself and track how you feel</h5>
