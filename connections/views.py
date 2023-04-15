@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.db.models import Q
-from .models import Connection, Conversation
+from .models import Connection, Conversation, Message
 
 
 @login_required
@@ -58,3 +58,14 @@ def all_conversations(request):
 
     return render(request, 'connections/conversations.html', context)
 
+
+@login_required
+def send_message(request, conversation_id):
+    conversation = get_object_or_404(Conversation, pk=conversation_id)
+    if request.method == 'POST':
+        Message.objects.create(
+            sender=request.user,
+            conversation=conversation,
+            content=request.POST.get('message_content')
+        )
+        return redirect('conversations')

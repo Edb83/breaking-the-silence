@@ -24,7 +24,7 @@
                 {% endif %}
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-{{ c.id }}">
-                    Launch demo modal
+                    Conversation
                 </button>
 
                 <!-- Modal -->
@@ -53,13 +53,14 @@
                                 {% endfor %}
                             </div>
                             <div class="modal-footer d-block">
-                                <form>
+                                <form action="{% url 'send_message' c.pk %}" method="POST">
+                                    {% csrf_token %}
                                     <div class="mb-3">
                                         <label for="exampleFormControlTextarea1" class="form-label">Message</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        <textarea name="message_content" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                     </div>
                                     <div class="d-flex justify-content-end">
-                                        <button type="button" class="btn btn-primary">Send</button>
+                                        <button type="submit" class="btn btn-primary">Send</button>
                                     </div>
                                 </form>
                             </div>
