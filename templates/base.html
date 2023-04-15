@@ -8,6 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Breaking the Silence{% block title %}{% endblock %}</title>
+    <link rel="icon" type="image/x-icon" href="/static/img/brand_favicon.ico">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <!-- Chart.Js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -74,6 +75,9 @@
                     {% else %}
                     <li class="nav-item">
                         <a class="nav-link text-light" href="{% url 'account_login' %}">Sign In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="{% url 'account_signup' %}">Sign Up</a>
                     </li>
                     {% endif %}
                 </ul>
