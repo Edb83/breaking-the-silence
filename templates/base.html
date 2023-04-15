@@ -62,22 +62,21 @@
             <div class="d-flex">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 float-right">
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="{% url 'topics' %}">Forum</a>
+                        <a class="nav-link text-light" href="{% url 'topics' %}"><i class="fa-brands fa-forumbee" style="color: #ffffff;"></i> Forum</a>
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="{% url 'user_profile' username=user.username %}">My
-                            Profile</a>
+                        <a class="nav-link text-light" href="{% url 'user_profile' username=user.username %}"><i class="fa-solid fa-user" style="color: #ffffff;"></i> My Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="{% url 'account_logout' %}">Logout</a>
+                        <a class="nav-link text-light" href="{% url 'account_logout' %}"><i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i> Logout</a>
                     </li>
                     {% else %}
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="{% url 'account_login' %}">Sign In</a>
+                        <a class="nav-link text-light" href="{% url 'account_login' %}"><i class="fa-solid fa-right-to-bracket" style="color: #ffffff;"></i> Sign In</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="{% url 'account_signup' %}">Sign Up</a>
+                        <a class="nav-link text-light" href="{% url 'account_signup' %}"><i class="fa-sharp fa-solid fa-right-to-bracket" style="color: #ffffff;"></i> Sign Up</a>
                     </li>
                     {% endif %}
                 </ul>
@@ -109,6 +108,24 @@
     </script>
 
     <footer class="bg-primary col-lg-12 text-light text-center mt-4 p-3 fixed-bottom">Powered by <i class="strong">Mighty Minds</i> <a href="#" aria-label="Arrow to top of page"><i class="fa-solid fa-arrow-up fa-lg"></i></a></footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const toggleButtons = document.querySelectorAll('.toggle-comments');
+          toggleButtons.forEach(function (button) {
+            button.addEventListener('click', function () {
+              const targetId = button.getAttribute('data-target');
+              const targetElement = document.getElementById(targetId);
+              if (targetElement.style.display === 'none') {
+                targetElement.style.display = 'block';
+              } else {
+                targetElement.style.display = 'none';
+              }
+            });
+          });
+        });
+    </script>
+        
 </body>
 
 </html>

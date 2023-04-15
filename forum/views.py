@@ -21,7 +21,7 @@ def topics(request):
             query = request.GET['search']
             if not query:
                 messages.error(request, "Please enter search criteria")
-                return render(request, 'forum/topics.html')
+                return redirect(reverse('topics'))
             queries = Q(title__icontains=query)
             serialized_topics = topics.filter(queries)
             return render(request, 'forum/topics.html', {'topics': serialized_topics, 'form': form})
