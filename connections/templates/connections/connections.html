@@ -4,35 +4,43 @@
 
 {% block content %}
 <h1>Connections</h1>
-<h2>Pending requests</h2>
-<ul>
-    {% for r in pending_requests %}
-        <li>
-            {% if r.sender != request.user %}
-                {{ r.sender }} wants to connect 
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Pending requests</h5>
+        <ul>
+            {% for r in pending_requests %}
+            <li>
+                {% if r.sender != request.user %}
+                {{ r.sender }} wants to connect
                 <a href="{% url 'handle_connection' r.pk 1 %}">Accept</a> |
                 <a href="{% url 'handle_connection' r.pk 2 %}">Dismiss</a>
-            {% else %}
-                You requested a connection with <a href="{% url 'user_profile' r.receiver.username %}">{{ r.receiver }}</a>
-            {% endif %}
-        </li>
-    {% empty %}
-        <li>No pending requests</li>    
-    {% endfor %}
-</ul>
-
-<h2>Connections</h2>
-<ul>
-    {% for connection in accepted_requests %}
-        <li>{% if connection.receiver == request.user %}
+                {% else %}
+                You requested a connection with <a href="{% url 'user_profile' r.receiver.username %}">{{ r.receiver
+                    }}</a>
+                {% endif %}
+            </li>
+            {% empty %}
+            <li>No pending requests</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Connections</h5>
+        <ul>
+            {% for connection in accepted_requests %}
+            <li>{% if connection.receiver == request.user %}
                 <a href="{% url 'user_profile' connection.sender.username %}">{{ connection.sender }}</a>
-            {% else %}
+                {% else %}
                 <a href="{% url 'user_profile' connection.receiver.username %}">{{ connection.receiver }}</a>
-            {% endif %}</li>
-    {% empty %}
-        <li>No connections</li>
-    {% endfor %}
-</ul>
-
+                {% endif %}
+            </li>
+            {% empty %}
+            <li>No connections</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
 
 {% endblock %}
