@@ -7,6 +7,14 @@ nav a {
     margin: 0.5em;
 }
 
+
+/* ----------------------------------forum */
+
+/* hides boostrap card border */
+.card-no-bored {
+    border: none !important;
+}
+
 a,
 nav>homemenu {
     color: #fff4f3;
@@ -114,6 +122,7 @@ post1 {
   .edit_user_profile_title, .user_profile_title, .checkin_form_title, .tracker_form_title {
     color: var(--primary);
     text-decoration: underline;
+    overflow-x: hidden;
   }
 
   .user_profile_section, .edit_user_profile_section, .checkin_form_section {
@@ -142,6 +151,7 @@ post1 {
     border-color: #000000;
     border-width: 10px;
     border-radius: 15px;
+    margin-bottom: 10px;
   }
 
   .user_profile_key_info_text {

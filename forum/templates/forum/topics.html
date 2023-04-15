@@ -9,6 +9,23 @@
             <h2 class="topic">Topics</h2>
 
     <h2>Topics</h2>
+    {% if user.is_authenticated and user.is_staff %}
+        <h4>Create a new topic</h4>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Create Topic</button>
+        </form>
+    {% endif %}
+
+   <div class="container mt-3">
+        <h4>All Topics</h4>
+        <div class="list-group col-lg-4">
+        {% for topic in topics %}
+                <a class="list-group-item list-group-item-action" href="{% url 'topic_detail' topic_id=topic.id %}">{{ topic.title }}</a>
+        {% empty %}
+            <p>No topics found</p>
+        {% endfor %}
     <form method="GET" action="{% url 'topics' %}" class="w-50">
         <div class="input-group w-80">
             <input class="form-control border border-black rounded-0" type="text" name="search"
