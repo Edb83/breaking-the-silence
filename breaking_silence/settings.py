@@ -97,6 +97,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 # Custom
                 'home.contexts.connect_context',
+                'connections.contexts.convo_context',
             ],
         },
     },
