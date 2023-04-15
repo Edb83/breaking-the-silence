@@ -11,9 +11,10 @@
     <form method="post">
       {% csrf_token %}
       {{ form|crispy }}
-      <button type="submit">Add Comment</button>
+      <button type="submit" class="btn btn-primary">Add Comment</button>
     </form>
   </div>
+  <a href="{% url 'topics' %}" class="btn btn-primary my-4">Back to Topics</a>
   <div>
     {% include "forum/comment_list.html" %}
   </div>
@@ -25,8 +26,9 @@
     <form method="post">
       {% csrf_token %}
       {{ form|crispy }}
-      <button type="submit">Add Comment</button>
+      <button type="submit" class="btn btn-primary">Add Comment</button>
     </form>
+    <a href="{% url 'topics' %}" class="btn btn-primary my-4">Back to Topics</a>
   {% endif %}
 {% endif %}
 {% endblock %}

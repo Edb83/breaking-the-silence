@@ -48,5 +48,6 @@
     {{ form|crispy }}
     <button type="submit" class="btn btn-primary">Add Post</button>
   </form>
+  <a href="{% url 'topics' %}" class="btn btn-primary my-4">Back to Topics</a>
 {% endif %}
 {% endblock %}
