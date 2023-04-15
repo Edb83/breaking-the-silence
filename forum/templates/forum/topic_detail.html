@@ -6,59 +6,40 @@
 <h1 class="topic">{{ topic.title }}</h1>
 <p>{{ topic.description }}</p>
 
-<h2 class="post">Posts:</h2>
-{% for post in posts %}
-  <div>
-    <h3><a href="{% url 'post_detail' post_id=post.id %}">{{ post.content|truncatechars:50 }}</a></h3>
-    <p>By: {{ post.created_by.username }} | {{ post.created_at }}</p>
-    
-    <!-- {% if post.comments.all %}
-      <h4>Replies:</h4>
-      {% for comment in post.comments.all|slice:":2" %}
-        <div>
-          <p>{{ comment.content }}</p>
-          <p>By: {{ comment.created_by.username }} | {{ comment.created_at }}</p>
-        </div>
-      {% endfor %}
-    {% endif %} -->
+<div class="card rounded-0 m-1">
+  <div class="card-title m-1 card-header">
+    <h2>Posts:</h2>
   </div>
-  </div>
+  
+  {% for post in posts %}
   <div class="card rounded-0 m-1">
-    <div class="card-title m-1 card-header">
-      <h2>Posts:</h2>
-    </div>
-    
-    {% for post in posts %}
-    <div class="card rounded-0 m-1">
-      <div class="card-body">
-        <h3><a class="text-black" href="{% url 'post_detail' pk=post.id %}">{{ post.content|truncatechars:50 }}</a></h3>
-        <div class="card-footer h-1">
-          <p><small class="text-muted">By: {{ post.created_by.username }} | {{ post.created_at }}</small></p>
-        </div>
-        <div class="card m-1 rounded-0 card-no-bored">
-          {% if post.comments.all %}
-            <div class="card-title card-header m-1">
-              <h3>Replies:</h3>
+    <div class="card-body">
+      <h3><a class="text-black" href="{% url 'post_detail' pk=post.id %}">{{ post.content|truncatechars:50 }}</a></h3>
+      <div class="card-footer h-1">
+        <p><small class="text-muted">By: {{ post.created_by.username }} | {{ post.created_at }}</small></p>
+      </div>
+      <div class="card m-1 rounded-0 card-no-bored">
+        {% if post.comments.all %}
+          <div class="card-title card-header m-1">
+            <h3>Replies:</h3>
+          </div>
+          {% for comment in post.comments.all|slice:":2" %}
+          <div class="card m-1 rounded-0">
+            <div>
+              <p class="m-1">{{ comment.content }}</p>
+            <div class="card-footer">
+              <p><small class="text-muted">By: {{ comment.created_by.username }} | {{ comment.created_at }}</small></p>
             </div>
-            {% for comment in post.comments.all|slice:":2" %}
-            <div class="card m-1 rounded-0">
-              <div>
-                <p class="m-1">{{ comment.content }}</p>
-              <div class="card-footer">
-                <p><small class="text-muted">By: {{ comment.created_by.username }} | {{ comment.created_at }}</small></p>
-              </div>
-              </div>
             </div>
-            {% endfor %}
-          {% endif %}
-          <a class="text-muted"  href="{% url 'post_detail' pk=post.id %}">Reply</a>
-        </div>
-      </div> 
-    </div>
-    {% endfor %}
+          </div>
+          {% endfor %}
+        {% endif %}
+        <a class="text-muted"  href="{% url 'post_detail' pk=post.id %}">Reply</a>
+      </div>
+    </div> 
   </div>
+  {% endfor %}
 </div>
-
 
 {% if user.is_authenticated %}
   <h2 class="post">Add a new post:</h2>
