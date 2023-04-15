@@ -7,14 +7,6 @@
         <div class="row">
             <div class="col-lg-6">
                 <h2>Topics</h2>
-                {% if user.is_authenticated and user.is_staff %}
-                    <h4>Create a new topic</h4>
-                    <form method="post">
-                        {% csrf_token %}
-                        {{ form.as_p }}
-                        <button type="submit">Create Topic</button>
-                    </form>
-                {% endif %}
                 <form method="GET" action="{% url 'topics' %}" class="w-50">
                     <div class="input-group w-80">
                         <input class="form-control border border-black rounded-0" type="text" name="search"
@@ -35,7 +27,7 @@
                     {% empty %}
                         <p>No topics found</p>
                     {% endfor %}
-                {% if user.is_authenticated %}
+                {% if user.is_authenticated and user.is_staff %}
                     <h4>Create a new topic</h4>
                     <form method="post">
                         {% csrf_token %}
