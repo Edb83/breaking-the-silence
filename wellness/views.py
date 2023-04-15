@@ -15,6 +15,10 @@ def user_check_in(request):
             wellness = form.save(commit=False)
             wellness.user = request.user
             wellness.save()
+            if wellness.health_rating < 5:
+                messages.success(request, "Sorry to hear you're not feeling your best.")
+            else:
+                messages.success(request, "Thanks for checking in!")
             return HttpResponseRedirect(reverse('wellness_tracker'))
     else:
         form = CheckinForm()
@@ -36,6 +40,5 @@ def wellness_tracker(request):
         "stats": serialized_stats,
         "date": serialized_date
         }
-    messages.success(request, "Thanks for checking in!")
     return render(request, 'wellness/tracker.html', context)
 
