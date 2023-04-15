@@ -12,7 +12,7 @@
       </div>
       <div class="col-lg-3 user_profile_key_info position-static" style="height: 450px">
         <div class="row text-center mt-1">
-          <img src="/static/img/user-icon.png" class="rounded-circle" >
+          <img src="{% static 'img/user-icon.png'%}" class="rounded-circle" >
         </div>
         <div class="row">
           <p class="user_profile_key_info_text">Force: {% if user_profile.force %} {{user_profile.force}} {% else %} N/A {% endif %}</p>
