@@ -5,7 +5,7 @@
 <section class="topics_section m-3 p-3">
     <div class="container">
         <div class="row">
-            <div class="col-6">
+            <div class="col-lg-6">
                 <h2>Topics</h2>
                 {% if user.is_authenticated and user.is_staff %}
                     <h4>Create a new topic</h4>
@@ -43,22 +43,12 @@
                         <button type="submit" class="btn btn-primary">Create Topic</button>
                     </form>
                     {% endif %}
-                    <h4>All Topics</h4>
-                    <div class="list-group">
-                        {% for topic in topics %}
-                        <a class="list-group-item list-group-item-action" href="{% url 'topic_detail' topic_id=topic.id %}">{{
-                            topic.title }}</a>
-                        {% empty %}
-                        <p>No topics found</p>
-                        {% endfor %}
-                    </div>
                 </div>
-                <div class="col-6">
-                    <div class="forum_image"></div>
-                </div>
+            </div>
+            <div class="col-lg-6">
+                <img class="forum_image" src="/static/img/pexels.jpg" alt="two people chatting">
             </div>
         </div>
     </div>
 </section>
 {% endblock %}
-

@@ -34,14 +34,14 @@
     <div class="row">
       {% if user.is_authenticated %}
       <h2>Add a new post:</h2>
+      {% endif %}
       <form method="post">
         {% csrf_token %}
         {{ form|crispy }}
         <button type="submit" class="btn btn-primary">Add Post</button>
+        <a href="{% url 'topics' %}" class="btn btn-primary">Return to Forum</a>
       </form>
-      {% endif %}
     </div>
-
   </div>
 </section>
 
