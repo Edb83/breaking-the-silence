@@ -56,6 +56,10 @@ footer p {
 
 /* body */
 
+.modal-backdrop.fade.show {
+  --bs-backdrop-zindex: 1044;
+}
+
 .overlay {
     position: fixed;
     /* Sits on top of the page content */

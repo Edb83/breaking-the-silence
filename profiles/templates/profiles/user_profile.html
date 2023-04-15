@@ -3,25 +3,24 @@
 {% block content %}
 <section class="user_profile_section m-3 p-3">
   <div class="container">
-  <div class="row">
-    <div class="col-12">
-      <h1 class="user_profile_title">{{ display_username }}</h1>
-    </div>
-    <div class="col-12 col-lg-9">
-      <p class="user_profile_story">{{ user_profile.story }}</p> 
-    </div>
-    <div class="col-12 col-lg-3 user_profile_key_info">
-      <p class="user_profile_key_info_text">Force: {{ user_profile.force }}</p>
-      <p class="user_profile_key_info_text">Regiment: {{ user_profile.regiment }}</p>
-      <p class="user_profile_key_info_text">Rank: {{ user_profile.rank }}</p>
-    </div>
-  </div>
-        {% if request.user == user_profile.user %}
-        <a href="{% url 'edit_user_profile' %}" class="btn btn-primary">Edit Profile</a>
-        <a href="{% url 'user_check_in' %}" class="btn btn-primary">How am I feeling today?</a>
-        {% endif %}
-        <p>{% include 'profiles/includes/requests.html' %}</p>
+    <div class="row">
+      <div class="col-12">
+        <h1 class="user_profile_title">{{ display_username }}'s Profile</h1>
       </div>
+      <div class="col-12 col-lg-9">
+        <p class="user_profile_story">{{ user_profile.story }}</p>
+      </div>
+      <div class="col-12 col-lg-3 user_profile_key_info">
+        <p class="user_profile_key_info_text">Force: {{ user_profile.force }}</p>
+        <p class="user_profile_key_info_text">Regiment: {{ user_profile.regiment }}</p>
+        <p class="user_profile_key_info_text">Rank: {{ user_profile.rank }}</p>
+      </div>
+    </div>
+    {% if request.user == user_profile.user %}
+    <a href="{% url 'edit_user_profile' %}" class="btn btn-primary">Edit Profile</a>
+    <a href="{% url 'user_check_in' %}" class="btn btn-primary">How am I feeling today?</a>
+    {% endif %}
+
+  </div>
 </section>
 {% endblock %}
-
