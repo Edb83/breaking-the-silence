@@ -116,6 +116,25 @@
         crossorigin="anonymous">
     </script>
 
+    <footer class="bg-primary col-lg-12 text-light text-center mt-4 p-3 fixed-bottom">Powered by <i class="strong">Mighty Minds</i> <a href="#" aria-label="Arrow to top of page"><i class="fa-solid fa-arrow-up fa-lg"></i></a></footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const toggleButtons = document.querySelectorAll('.toggle-comments');
+          toggleButtons.forEach(function (button) {
+            button.addEventListener('click', function () {
+              const targetId = button.getAttribute('data-target');
+              const targetElement = document.getElementById(targetId);
+              if (targetElement.style.display === 'none') {
+                targetElement.style.display = 'block';
+              } else {
+                targetElement.style.display = 'none';
+              }
+            });
+          });
+        });
+    </script>
+        
 </body>
 
 </html>
