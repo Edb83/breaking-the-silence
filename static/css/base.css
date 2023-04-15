@@ -43,8 +43,6 @@ nav>homemenu {
     /* flex-direction: row; */
     /* justify-content: space-evenly; */
 
-} */
-
 footer ul {
     list-style-type: none;
 }
@@ -108,13 +106,18 @@ post1 {
     --padding: 1rem;
   }
 
+  .hero_img {
+    text-align: center;
+    margin: 0 25%;
+  }
+
   .edit_user_profile_title, .user_profile_title, .checkin_form_title, .tracker_form_title {
     color: var(--primary);
     text-decoration: underline;
     overflow-x: hidden;
   }
 
-  .user_profile_section, .edit_user_profile_section, .checkin_form_section, .topics_section, .topic_detail_section, .post_detail_section {
+  .user_profile_section, .edit_user_profile_section, .checkin_form_section, .topics_section, .topic_detail_section, .post_detail_section, .hero_img_section {
     margin: 2%;
     color: var(--primary);
     background-color:var(--secondary);
