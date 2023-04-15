@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<section class="post_detail_section m-3 p-3">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1>Thank you for reporting this post.This will be reviewed by our admin, and we will reach out to the poster.</h1>
+        <br>
+        <a href="{% url 'topics' %}" class="btn btn-primary">Return to Forum</a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -21,7 +21,7 @@ def topics(request):
             query = request.GET['search']
             if not query:
                 messages.error(request, "Please enter search criteria")
-                return render(request, 'forum/topics.html')
+                return redirect(reverse('topics'))
             queries = Q(title__icontains=query)
             serialized_topics = topics.filter(queries)
             return render(request, 'forum/topics.html', {'topics': serialized_topics, 'form': form})
@@ -99,3 +99,8 @@ def edit_post(request, post_id):
     else:
         form = PostForm(instance=post)
     return render(request, 'forum/edit_post.html', {'form': form})
+
+@login_required
+def reported(request):
+    messages.success(request, "Thanks for reporting this post.")
+    return render(request, 'forum/reported.html')
