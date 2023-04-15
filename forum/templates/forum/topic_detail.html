@@ -2,44 +2,48 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<div class="overlay_posts"></div>
-<h1 class="topic">{{ topic.title }}</h1>
-<p>{{ topic.description }}</p>
-
-<div class="card rounded-0 m-1">
-  <div class="card-title m-1 card-header">
-    <h2>Posts:</h2>
-  </div>
-  
-  {% for post in posts %}
-  <div class="card rounded-0 m-1">
-    <div class="card-body">
-      <h3><a class="text-black" href="{% url 'post_detail' pk=post.id %}">{{ post.content|truncatechars:50 }}</a></h3>
-      <div class="card-footer h-1">
-        <p><small class="text-muted">By: {{ post.created_by.username }} | {{ post.created_at }}</small></p>
+<section class="topic_detail_section m-3 p-3">
+  <div class="container">
+    <div class="row">
+      <div>
+        <h1>{{ topic.title }}</h1>
+        <p>{{ topic.description }}</p>
       </div>
-      <div class="card m-1 rounded-0 card-no-bored">
+    </div>
+    <div class="row">
+      <h2>Posts:</h2>
+      {% for post in posts %}
+      <h3><a class="btn btn-info topic_detail_comments" href="{% url 'post_detail' pk=post.id %}">{{ post.content|truncatechars:300 }}</a></h3>
+      <div>
+        <p><small>By: {{ post.created_by.username }} | {{ post.created_at }}</small></p>
+      </div>
+      <div>
         {% if post.comments.all %}
-          <div class="card-title card-header m-1">
-            <h3>Replies:</h3>
-          </div>
-          {% for comment in post.comments.all|slice:":2" %}
-          <div class="card m-1 rounded-0">
-            <div>
-              <p class="m-1">{{ comment.content }}</p>
-            <div class="card-footer">
-              <p><small class="text-muted">By: {{ comment.created_by.username }} | {{ comment.created_at }}</small></p>
-            </div>
-            </div>
-          </div>
-          {% endfor %}
-        {% endif %}
-        <a class="text-muted"  href="{% url 'post_detail' pk=post.id %}">Reply</a>
+        <h3>Replies:</h3>
       </div>
-    </div> 
+      {% for comment in post.comments.all|slice:":2" %}
+      <p>{{ comment.content }}</p>
+      <p>By: {{ comment.created_by.username }} | {{ comment.created_at }}</p>
+      {% endfor %}
+      {% endif %}
+      <div class="topic_detail_button_spacing">
+        <a class="btn btn-primary"  href="{% url 'post_detail' pk=post.id %}">Reply</a>
+      </div>
+    </div>
+    {% endfor %}
+    <div class="row">
+      {% if user.is_authenticated %}
+      <h2>Add a new post:</h2>
+      {% endif %}
+      <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-primary">Add Post</button>
+        <a href="{% url 'topics' %}" class="btn btn-primary">Return to Forum</a>
+      </form>
+    </div>
   </div>
-  {% endfor %}
-</div>
+</section>
 
 {% if user.is_authenticated %}
   <h2 class="post">Add a new post:</h2>

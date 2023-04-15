@@ -6,4 +6,5 @@ urlpatterns = [
     path('connect/<str:username>/', views.create_connection, name='create_connection'),
     path('handle/<int:connection_id>/<str:decision>/', views.handle_connection, name='handle_connection'),
     path('conversations/', views.all_conversations, name='conversations'),
+    path('message/<int:conversation_id>/', views.send_message, name='send_message'),
 ]
