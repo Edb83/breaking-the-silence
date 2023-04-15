@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %} - Conversations{% endblock %}
 
 {% block content %}
@@ -24,7 +24,7 @@
                 {% endif %}
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-{{ c.id }}">
-                    Launch demo modal
+                    Conversation
                 </button>
 
                 <!-- Modal -->
@@ -45,21 +45,26 @@
                             </div>
                             <div class="modal-body">
                                 {% for m in c.messages.all %}
-                                <div style="--bs-bg-opacity: .75;" class="card my-2 {% if m.sender == request.user %}offset-2 text-white bg-primary{% else %}col-10 bg-light{% endif %}">
+                                <div style="--bs-bg-opacity: .75;"
+                                    class="card my-2 {% if m.sender == request.user %}offset-2 text-white bg-primary{% else %}col-10 bg-light{% endif %}">
                                     <div class="card-body">
-                                      {{ m.content }}
+                                        {{ m.content }}
                                     </div>
-                                  </div>
+                                </div>
                                 {% endfor %}
                             </div>
                             <div class="modal-footer d-block">
-                                <form>
+                                <form method="POST">
+                                    {% csrf_token %}
                                     <div class="mb-3">
                                         <label for="exampleFormControlTextarea1" class="form-label">Message</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        <textarea name="message_content" class="form-control"
+                                            id="exampleFormControlTextarea1" rows="3"></textarea>
                                     </div>
                                     <div class="d-flex justify-content-end">
-                                        <button type="button" class="btn btn-primary">Send</button>
+                                        <button type="submit" class="btn btn-primary sendMessageBtn"
+                                            data-conversation="{{ c.pk }}"
+                                            data-url="{% url 'send_message' c.pk %}">Send</button>
                                     </div>
                                 </form>
                             </div>
@@ -68,10 +73,12 @@
                 </div>
             </li>
             {% empty %}
-            <li>No conversations yet</li>
+                <li>No conversations yet</li>
             {% endfor %}
         </ul>
     </div>
 </div>
+
+<script src="{% static 'connections/js/add_comment.js' %}"></script>
 
 {% endblock %}
