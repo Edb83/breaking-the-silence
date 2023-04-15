@@ -3,7 +3,7 @@
     <h4>{{ comment.created_by.username }}</h4>
     <p>{{ comment.content }}</p>
     <p class="m-2"><small class="text-muted">By: {{ post.created_by.username }} | {{ post.created_at }}</small></p>
-    <button class="toggle-comments btn btn-sm btn-primary" data-target="comment-{{ comment.id }}">Show/Hide Replies</button>
+    <button class="toggle-comments btn btn-sm btn-primary" data-target="comment-{{ comment.id }}">Show/Hide</button>
     <div id="comment-{{ comment.id }}" style="display: none;">
         <a href="{% url 'post_detail' pk=post.id %}?parent={{ comment.id }}">Reply</a>
         {% with comments=comment.comment_set.all level=level|default:0|add:1 %}
