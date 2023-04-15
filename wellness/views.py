@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Wellness
 from .forms import CheckinForm
 from django.urls import reverse
+from django.contrib import messages
 
 
 @login_required
@@ -31,11 +32,10 @@ def wellness_tracker(request):
         serialized_date.append(str(
             date_only
         ))
-    serialized_stats.reverse()
-    serialized_date.reverse()
     context = {
         "stats": serialized_stats,
         "date": serialized_date
         }
+    messages.success(request, "Thanks for checking in!")
     return render(request, 'wellness/tracker.html', context)
 
