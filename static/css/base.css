@@ -158,12 +158,17 @@ post1 {
 
   body {
     min-height: 100vh;
-    /* padding-bottom: 4rem; */
+    padding-bottom: 4rem;
   }
 
-  /* footer {
-    height: 4rem;
-  }*/
+  footer {
+    height: 3rem;
+  }
+
+  .home-card {
+    min-height: 350px;
+    max-height: 400px;
+  }
 
 
   @media only screen and (min-width: 992px) {

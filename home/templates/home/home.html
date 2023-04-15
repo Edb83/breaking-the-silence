@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
 
-{% block title %} - Home{%  endblock%}
+{% block title %} - Home{% endblock%}
 
 {% block content %}
 <div class="container mt-3">
-    
+
     <div class="container col-lg-10 text-center border border-secondary rounded">
         <div>
             <img src="/static/img/brand_logo.svg" alt="" height="250" width="250">
         </div>
         <div class="container col-lg-6 text-center">
-            <h2 >Breaking the Silence is a free forum to support our veterans fighting against their mental health</h2>
+            <h2>Breaking the Silence is a free forum to support our veterans fighting against their mental health</h2>
         </div>
     </div>
     {% if user.is_authenticated %}
@@ -23,62 +23,77 @@
             <div class="row">
                 {% for topic in topics %}
                 <div class="col-lg-4">
-                        <div class="card">
-                            <h5 class="card-header">Featured</h5>
-                            <div class="card-body">
+                    <div class="card home-card">
+                        <h5 class="card-header">Featured</h5>
+                        <div class="card-body">
                             <h5 class="card-title">{{ topic.title }}</h5>
-                            <p class="card-text">{{ topic.content }}</p>
-                            <a href="{% url 'topic_detail' topic_id=topic.id %}" class="btn btn-primary">Go to Topic</a>
+                            <p class="card-text">{{ topic.content| truncatechars:100}}</p>
+                            <div class="text-center">
+                                <a href="{% url 'topic_detail' topic_id=topic.id %}" class="btn btn-primary">Go to
+                                    Topic</a>
+                            </div>
                         </div>
                     </div>
                 </div>
                 {% endfor %}
-        {% else %}
-        <div class="container col-lg-10 mt-4">
-            <div class="container text-center">
-                <h4>What are we all about?</h4>
-            </div>
-    
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 my-4">
-                            <div class="card">
-                                <h5 class="card-header">Forum</h5>
-                                <div class="card-body">
-                                <h5 class="card-title">Connect with others</h5>
-                                <p class="card-text">We have a forum designed for veterans to discuss topics and engage with each other, where you can share your experiences and find new connections, try it out below!</p>
-                                <a href="{% url 'topics' %}" class="btn btn-primary">Forum</a>
-                            </div>
-                        </div>
+                {% else %}
+                <div class="container col-lg-10 mt-4">
+                    <div class="container text-center">
+                        <h4>What are we all about?</h4>
                     </div>
-    
-                    <div class="col-lg-4 my-4">
-                        <div class="card">
-                            <h5 class="card-header">Create a Profile</h5>
-                            <div class="card-body">
-                            <h5 class="card-title">Sign up or login to create a profile</h5>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                            <a class="btn btn-primary" href="{% url 'account_login' %}">Sign In</a>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div class="col-lg-4 my-4">
-                        <div class="card">
-                            <h5 class="card-header">Wellness Tracker</h5>
-                            <div class="card-body">
-                            <h5 class="card-title">Check in with yourself and track how you feel</h5>
-                            <p class="card-text">Once you have an account, you can check in with yourself and track how you feel on a scale of 1-10. Over time, you can track how this changes and see any patterns in your wellbeing.</p>
-                            <a href="{% url 'user_check_in' %}" class="btn btn-primary">How am I feeling today?</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        {% endif %}
-    </div>
-    
-    
-</div>
 
-{% endblock %}
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-4 my-4">
+                                <div class="card home-card">
+                                    <h5 class="card-header">Forum</h5>
+                                    <div class="card-body">
+                                        <h5 class="card-title">Connect with others</h5>
+                                        <p class="card-text">We have a forum designed for veterans to discuss topics and
+                                            engage with each other, where you can share your experiences and find new
+                                            connections, try it out below!</p>
+                                        <div class="text-center">
+                                            <a href="{% url 'topics' %}" class="btn btn-primary">Forum</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 my-4">
+                                <div class="card home-card">
+                                    <h5 class="card-header">Create a Profile</h5>
+                                    <div class="card-body">
+                                        <h5 class="card-title">Sign up or login to create a profile</h5>
+                                        <p class="card-text">With supporting text below as a natural lead-in to
+                                            additional content.</p>
+                                        <div class="text-center">
+                                            <a class="btn btn-primary" href="{% url 'account_login' %}">Sign In</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 my-4">
+                                <div class="card home-card">
+                                    <h5 class="card-header">Wellness Tracker</h5>
+                                    <div class="card-body">
+                                        <h5 class="card-title">Check in with yourself and track how you feel</h5>
+                                        <p class="card-text">Once you have an account, you can check in with yourself
+                                            and track how you feel on a scale of 1-10. Over time, you can track how this
+                                            changes and see any patterns in your wellbeing.</p>
+                                        <div class="text-center">
+                                            <a href="{% url 'user_check_in' %}" class="btn btn-primary">How am I feeling
+                                                today?</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+
+
+            </div>
+
+            {% endblock %}
