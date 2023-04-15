@@ -1,4 +1,7 @@
 from django.shortcuts import render
+from forum.models import Topic
 
 def home(request):
-    return render(request, 'home/home.html')
+    topics = Topic.objects.all()
+    context = {'topics': topics}
+    return render(request, 'home/home.html', context)
