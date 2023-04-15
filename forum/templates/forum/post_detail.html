@@ -2,31 +2,30 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-
-<div class="container">
-  <div class="card m-1 rounded-0">
-    <h1 class="m-1">{{ post.topic.title }}</h1>
-    <h2>{{ post.content }}</h2>
-    <p class="m-2"><small class="text-muted">By: {{ post.created_by.username }} | {{ post.created_at }}</small></p>
-    <form method="post">
-      {% csrf_token %}
-      {{ form|crispy }}
-      <button type="submit">Add Comment</button>
-    </form>
+<section class="post_detail_section m-3 p-3">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1>{{ post.topic.title }}</h1>
+        <h5>{{ post.content }}</h5>
+        <p><small>By: {{ post.created_by.username }} | {{ post.created_at }}</small></p>
+        <form method="post">
+          {% csrf_token %}
+          {{ form|crispy }}
+          <button type="submit" class="btn btn-primary">Add Comment</button>
+        </form>
+        <div>
+          {% include "forum/comment_list.html" %}
+        </div>
+        {% if user.is_authenticated %}
+        {% if parent_comment %}
+        <h2>Reply to {{ parent_comment.created_by.username }}:</h2>
+        {% endif %}
+        {% endif %}
+        <br>
+        <a href="{% url 'topics' %}" class="btn btn-primary">Return to Forum</a>
+      </div>
+    </div>
   </div>
-  <div>
-    {% include "forum/comment_list.html" %}
-  </div>
-</div>
-
-{% if user.is_authenticated %}
-  {% if parent_comment %}
-    <h2>Reply to {{ parent_comment.created_by.username }}:</h2>
-    <form method="post">
-      {% csrf_token %}
-      {{ form|crispy }}
-      <button type="submit">Add Comment</button>
-    </form>
-  {% endif %}
-{% endif %}
+</section>
 {% endblock %}
