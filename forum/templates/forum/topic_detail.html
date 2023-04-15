@@ -28,6 +28,7 @@
       {% endif %}
       <div class="topic_detail_button_spacing">
         <a class="btn btn-primary"  href="{% url 'post_detail' pk=post.id %}">Reply</a>
+        <a class="btn btn-danger"  href="{% url 'reported' %}">Report</a>
       </div>
     </div>
     {% endfor %}
