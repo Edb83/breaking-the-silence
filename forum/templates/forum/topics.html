@@ -26,7 +26,7 @@
         {% empty %}
             <p>No topics found</p>
         {% endfor %}
-    <form method="GET" action="{% url 'topics' %}" class="w-50">
+    <form method="GET" action="{% url 'topics' %}">
         <div class="input-group w-80">
             <input class="form-control border border-black rounded-0" type="text" name="search"
                 placeholder="Search">
@@ -45,7 +45,7 @@
             <form method="post">
                 {% csrf_token %}
                 {{ form |crispy }}
-                <button type="submit">Create Topic</button>
+                <button type="submit" class="btn btn-primary my-4">Create Topic</button>
             </form>
             {% endif %}
 
