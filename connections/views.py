@@ -2,7 +2,9 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.db.models import Q
+from django.http import JsonResponse
 from .models import Connection, Conversation, Message
+import json
 
 
 @login_required
@@ -62,10 +64,17 @@ def all_conversations(request):
 @login_required
 def send_message(request, conversation_id):
     conversation = get_object_or_404(Conversation, pk=conversation_id)
+    body_string = request.body.decode("utf-8")
+    data = json.loads(body_string)
     if request.method == 'POST':
-        Message.objects.create(
-            sender=request.user,
-            conversation=conversation,
-            content=request.POST.get('message_content')
-        )
-        return redirect('conversations')
+        message = Message.objects.create(
+                sender=request.user,
+                conversation=conversation,
+                content=data.get('comment')
+            )
+        data = {
+            'comment': message.content,
+            'created_on': message.created_at.strftime("%H:%M, %d %b")
+        }
+
+        return JsonResponse(data)
