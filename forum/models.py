@@ -25,9 +25,10 @@ class Post(models.Model):
 
 class Comment(models.Model):
     content = models.TextField()
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
-    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    parent = models.ForeignKey('self', null=True, blank=True, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.content[:50]
+        return self.content[:50] + "..."
