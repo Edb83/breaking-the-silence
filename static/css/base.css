@@ -7,6 +7,14 @@ nav a {
     margin: 0.5em;
 }
 
+
+/* ----------------------------------forum */
+
+/* hides boostrap card border */
+.card-no-bored {
+    border: none !important;
+}
+
 a,
 nav>homemenu {
     color: #fff4f3;
