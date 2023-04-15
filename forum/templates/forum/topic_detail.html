@@ -13,7 +13,7 @@
     <div class="row">
       <h2>Posts:</h2>
       {% for post in posts %}
-      <h3><a class="btn btn-info topic_detail_comments" href="{% url 'post_detail' pk=post.id %}">{{ post.content|truncatechars:300 }}</a></h3>
+      <h3><a class="btn btn-info topic_detail_comments" href="{% url 'post_detail' pk=post.id %}"><i class="fa-solid fa-bookmark" style="color: #ffffff;"></i> {{ post.content|truncatechars:300 }}</a></h3>
       <div>
         <p><small>By: {{ post.created_by.username }} | {{ post.created_at }}</small></p>
       </div>
@@ -27,7 +27,7 @@
       {% endfor %}
       {% endif %}
       <div class="topic_detail_button_spacing">
-        <a class="btn btn-primary"  href="{% url 'post_detail' pk=post.id %}">Reply</a>
+        <a class="btn btn-primary"  href="{% url 'post_detail' pk=post.id %}">Reply <i class="fa-solid fa-reply" style="color: #ffffff;"></i></a>
         <a class="btn btn-danger"  href="{% url 'reported' %}">Report</a>
       </div>
     </div>
