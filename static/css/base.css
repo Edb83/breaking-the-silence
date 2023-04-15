@@ -157,3 +157,11 @@ post1 {
     width: 100%;
     text-align: left !important;
   }
+
+  body {
+    padding-bottom: 4rem;
+  }
+
+  footer {
+    height: 4rem;
+  }

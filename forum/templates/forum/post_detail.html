@@ -8,6 +8,11 @@
     <h1 class="m-1">{{ post.topic.title }}</h1>
     <h2>{{ post.content }}</h2>
     <p class="m-2"><small class="text-muted">By: {{ post.created_by.username }} | {{ post.created_at }}</small></p>
+    <form method="post">
+      {% csrf_token %}
+      {{ form|crispy }}
+      <button type="submit">Add Comment</button>
+    </form>
   </div>
   <div>
     {% include "forum/comment_list.html" %}
