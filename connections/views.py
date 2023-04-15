@@ -2,11 +2,11 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.db.models import Q
-from .models import Connection
+from .models import Connection, Conversation
 
 
 @login_required
-def all_connections(request):
+def connections(request):
     query = Q(receiver=request.user) | Q(sender=request.user)
     connections = Connection.objects.filter(query)
 
@@ -16,7 +16,7 @@ def all_connections(request):
         'dismissed_requests': connections.filter(status=2),
     }
 
-    return render(request, 'connections/all_connections.html', context)
+    return render(request, 'connections/connections.html', context)
     
 
 @login_required
@@ -25,7 +25,7 @@ def handle_connection(request, connection_id, decision):
     connection_request.status = decision
     connection_request.save()
 
-    return redirect('all_connections')
+    return redirect('connections')
 
 
 @login_required
@@ -44,4 +44,17 @@ def create_connection(request, username):
         )
         print('new request made')
 
-    return redirect('all_connections')
+    return redirect('connections')
+
+
+@login_required
+def all_conversations(request):
+    connections = Connection.objects.filter(Q(sender=request.user) | Q(receiver=request.user))
+    conversations = Conversation.objects.filter(connection__in=connections)
+
+    context = {
+        'conversations': conversations,
+    }
+
+    return render(request, 'connections/conversations.html', context)
+

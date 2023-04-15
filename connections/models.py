@@ -23,7 +23,7 @@ class Connection(models.Model):
 
 
 class Conversation(models.Model):
-    connection = models.ForeignKey(Connection, on_delete=models.CASCADE)
+    connection = models.OneToOneField(Connection, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

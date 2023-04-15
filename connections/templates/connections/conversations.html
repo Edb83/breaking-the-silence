@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block title %} - Conversations{% endblock %}
+
+{% block content %}
+
+<h1>Conversations</h1>
+<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+    aria-controls="offcanvasRight">Conversations</button>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasRightLabel">Conversations</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <ul>
+            {% for c in conversations %}
+            <li>
+                {% if c.connection.sender != request.user %}
+                    {{ c.connection.sender }}
+                {% else %}
+                    {{ c.connection.receiver }}
+                {% endif %}
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-{{ c.id }}">
+                    Launch demo modal
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="modal-{{ c.id }}" tabindex="1" aria-labelledby="modal-{{ c.id }}Label"
+                    aria-hidden="true">
+                    <div class="modal-lg modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="modal-{{ c.id }}Label">
+                                    {% if c.connection.sender != request.user %}
+                                        Conversation with {{ c.connection.sender }}
+                                    {% else %}
+                                        Conversation with {{ c.connection.receiver }}
+                                    {% endif %}
+                                </h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                {% for m in c.messages.all %}
+                                <div style="--bs-bg-opacity: .75;" class="card my-2 {% if m.sender == request.user %}offset-2 text-white bg-primary{% else %}col-10 bg-light{% endif %}">
+                                    <div class="card-body">
+                                      {{ m.content }}
+                                    </div>
+                                  </div>
+                                {% endfor %}
+                            </div>
+                            <div class="modal-footer d-block">
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlTextarea1" class="form-label">Message</label>
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    </div>
+                                    <div class="d-flex justify-content-end">
+                                        <button type="button" class="btn btn-primary">Send</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            {% empty %}
+            <li>No conversations yet</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+{% endblock %}
