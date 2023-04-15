@@ -8,6 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Breaking the Silence{% block title %}{% endblock %}</title>
+    <link rel="icon" type="image/x-icon" href="/static/img/brand_favicon.ico">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <!-- Chart.Js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -61,19 +62,21 @@
             <div class="d-flex">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 float-right">
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="{% url 'topics' %}">Forum</a>
+                        <a class="nav-link text-light" href="{% url 'topics' %}"><i class="fa-brands fa-forumbee" style="color: #ffffff;"></i> Forum</a>
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="{% url 'user_profile' username=user.username %}">My
-                            Profile</a>
+                        <a class="nav-link text-light" href="{% url 'user_profile' username=user.username %}"><i class="fa-solid fa-user" style="color: #ffffff;"></i> My Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="{% url 'account_logout' %}">Logout</a>
+                        <a class="nav-link text-light" href="{% url 'account_logout' %}"><i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i> Logout</a>
                     </li>
                     {% else %}
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="{% url 'account_login' %}">Sign In</a>
+                        <a class="nav-link text-light" href="{% url 'account_login' %}"><i class="fa-solid fa-right-to-bracket" style="color: #ffffff;"></i> Sign In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="{% url 'account_signup' %}"><i class="fa-sharp fa-solid fa-right-to-bracket" style="color: #ffffff;"></i> Sign Up</a>
                     </li>
                     {% endif %}
                 </ul>

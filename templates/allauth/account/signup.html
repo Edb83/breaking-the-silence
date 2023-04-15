@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 
+{% load crispy_forms_tags %}
 {% load i18n %}
 
 {% block head_title %}{% trans "Signup" %}{% endblock %}
@@ -8,35 +9,18 @@
 
 <div class="container col-lg-5 mt-3">
   <h2>{% trans "Sign Up" %}</h1>
-  <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
-    {% csrf_token %}
-    {{ form.as_p }}
-    {% if redirect_field_value %}
+    <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+      {% csrf_token %}
+      {{ form |crispy }}
+      {% if redirect_field_value %}
       <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-    {% endif %}
+      {% endif %}
 
-    <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Username</label>
-      <input type="text" class="form-control" id="exampleInputUsername1" aria-describedby="usernameHelp">
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Email address (optional)</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1">
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Password Again</label>
-      <input type="password" class="form-control" id="exampleInputPassword1">
-    </div>
-    <div class="mb-3">
-      <p>{% blocktrans %}Already have an account ? Then please <a href="{{ login_url }}">Sign In</a>{% endblocktrans %}</p>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+      <div class="mb-3">
+        <p>{% blocktrans %}Already have an account ? Then please <a href="{{ login_url }}">Sign In</a>{% endblocktrans%}</p>
+      </div>
+      <button type="submit" class="btn btn-primary">Sign Up <i class="fa-solid fa-arrow-right" style="color: #ffffff;"></i></button>
+    </form>
 </div>
 <!-- <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p> -->
 
