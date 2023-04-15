@@ -26,9 +26,9 @@ class Connection(models.Model):
 
 @receiver(post_save, sender=Connection)
 def create_conversation(sender, instance, created, **kwargs):
-    if instance.status == 1:
-        Conversation.objects.get_or_create(connection=instance)
-    # instance.conversation.save()
+
+    if created:
+        Conversation.objects.create(connection=instance)
 
 
 class Conversation(models.Model):
