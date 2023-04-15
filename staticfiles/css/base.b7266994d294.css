@@ -1,0 +1,185 @@
+/* link for google font */
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif&display=swap');
+
+/* nav bar and footer css here */
+
+nav a {
+    /* margin: 0.5em; */
+}
+
+
+/* ----------------------------------forum */
+
+/* hides boostrap card border */
+.card-no-bored {
+    border: none !important;
+}
+
+a,
+nav>homemenu {
+    color: #fff4f3;
+}
+
+.homemenu {
+    height: auto;
+    padding-top: 5px;
+    padding-left: 15px;
+    background: rgb(0, 0, 0, 0.9);
+    font-size: 22px;
+    font-family: pt serif, oswald, sans-serif;
+    font-weight: 600;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+}
+
+/* footer {
+    /* padding: 1em 0; */
+    /* background-color: rgb(0, 0, 0, 0.9); */
+    /* color: #fff4f3; */
+    /* text-align: center; */
+    /* font-size: 20px; */
+    /* display: flex; */
+    /* flex-direction: row; */
+    /* justify-content: space-evenly; */
+
+footer ul {
+    list-style-type: none;
+}
+
+footer p {
+    width: 33.3%;
+}
+
+
+/* body */
+
+.modal-backdrop.fade.show {
+  --bs-backdrop-zindex: 1044;
+}
+
+.forum_image {
+    /* Sits on top of the page content */
+    background-color: rgb(163, 160, 160);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+}
+
+.topic {
+    font-size: 100px;
+    color: white;
+}
+
+.post,
+post1 {
+    font-size: 30px;
+    color: white
+}
+
+.overlay_posts {
+    position: fixed;
+    /* Sits on top of the page content */
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(163, 160, 160);
+    height: 100%;
+    z-index: -1;
+}
+.toast {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 9999;
+    min-width: 350px;
+    max-width: 350px;
+}
+
+:root {
+    --primary: #00028b;
+    --secondary: rgb(213, 246, 247);
+    --tertiary: rgba(0, 123, 255, 0.307);
+    --padding: 1rem;
+  }
+
+  .hero_img {
+    text-align: center;
+    margin: 0 25%;
+  }
+
+  .edit_user_profile_title, .user_profile_title, .checkin_form_title, .tracker_form_title {
+    color: var(--primary);
+    text-decoration: underline;
+    overflow-x: hidden;
+  }
+
+  .user_profile_section, .edit_user_profile_section, .checkin_form_section, .topics_section, .topic_detail_section, .post_detail_section, .hero_img_section {
+    margin: 2%;
+    color: var(--primary);
+    background-color:var(--secondary);
+    border-color: var(--primary);
+    border-width: 5px;
+    border-radius: 15px;
+  }
+
+  .user_profile_title, .edit_user_profile_title {
+    color: var(--primary);
+    text-decoration: underline;
+    padding-bottom: 10px;
+  }
+
+  .user_profile_story {
+    color: var(--primary);
+    padding-bottom: 10px;
+  }
+
+  .user_profile_key_info {
+    background-color: var(--tertiary);
+    padding: 10px;
+    border-color: #000000;
+    border-width: 10px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+  }
+
+  .user_profile_key_info_text {
+    color: var(--primary);
+  }
+
+  .topic_detail_button_spacing {
+    padding-bottom: 20px;
+  }
+
+  .topic_detail_comments {
+    width: 100%;
+    text-align: left !important;
+  }
+
+  body {
+    min-height: 100vh;
+    padding-bottom: 4rem;
+  }
+
+  footer {
+    height: 3rem;
+  }
+
+  .home-card {
+    min-height: 350px;
+    max-height: 400px;
+  }
+
+
+  @media only screen and (min-width: 992px) {
+    .forum_image {
+      /* Sits on top of the page content */
+      background-color: rgb(163, 160, 160);
+      background-size: cover;
+      background-repeat: no-repeat;
+      width: 100%;
+    }
+  } 
